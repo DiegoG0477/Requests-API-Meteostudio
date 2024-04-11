@@ -1,17 +1,17 @@
 import { CreateNotificationUseCase } from "../../UseCases/CreateNotificationUseCase";
 import { NotificationQueue } from "../../../infraestructure/services/RabbitMq/NotificationQueue";
 
-export class NotificationUpdateBookUseCase {
+export class NotificationRegisterUseCase {
     constructor(
         readonly serviceNotifiacion: NotificationQueue,
         readonly createNotification: CreateNotificationUseCase
     ) {}
 
     async run(data: any) {
-        let event = "book.update";
+        const event = "users.post-register";
 
         if (!data) {
-            throw new Error("No se pudo actualizar el libro (datos insuficientes)");
+            throw new Error("No se pudo registrar al usuario (datos insuficientes)");
         }
         
         const notification = await this.createNotification.run(event, data);

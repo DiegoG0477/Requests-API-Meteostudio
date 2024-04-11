@@ -1,16 +1,13 @@
 import { Request, Response } from "express";
-import { NotificationGetBooksUseCase } from "../../../application/Services/BookServices/NotificationGetBooks";
+import { NotificationLoginUseCase } from "../../../application/Services/UserServices/NotificationLogin";
 
-export class NotificationGetBooksController {
-    constructor(readonly notificationBookUseCase: NotificationGetBooksUseCase) {}
+export class NotificationLoginController {
+    constructor(readonly notificationAuthUseCase: NotificationLoginUseCase) {}
 
     async run(req: Request, res: Response) {
-        const bookId = req.params.id;
+        const data = req.body;
         try {
-            const data = bookId ? { bookId } : {};
-            
-            this.notificationBookUseCase.run(data);
-
+            await this.notificationAuthUseCase.run(data);
             res.status(200).send({
                 status: "success",
                 data: "Notificacion enviada",

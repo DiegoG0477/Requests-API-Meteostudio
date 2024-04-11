@@ -1,20 +1,21 @@
 import { Request, Response } from "express";
+import { NotificationGetUsersUseCase } from "../../../application/Services/UserServices/NotificationsGetUsers";
 
-import { NotificationUpdateBookUseCase } from "../../../application/Services/BookServices/NotificationUpdateBook";
-
-export class NotificationUpdateBookController {
-    constructor(readonly notificationBookUseCase: NotificationUpdateBookUseCase) {}
+export class NotificationGetUsersController {
+    constructor(readonly notificationGetUsersUseCase: NotificationGetUsersUseCase) {}
 
     async run(req: Request, res: Response) {
         let data = req.body;
-        const bookId = req.params
+        const idUser = req.params.idUser;
         try {
-            data = {
-                ...data,
-                bookId
+            if(idUser) {
+                data = {
+                    ...data,
+                    idUser,
+                };
             }
 
-            await this.notificationBookUseCase.run(data);
+            await this.notificationGetUsersUseCase.run(data);
             res.status(200).send({
                 status: "success",
                 data: "Notificacion enviada",

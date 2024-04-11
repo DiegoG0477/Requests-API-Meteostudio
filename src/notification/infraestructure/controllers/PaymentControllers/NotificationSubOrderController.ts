@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { NotificationServiceOrderUseCase } from "../../../application/Services/PaymentServices/NotificationServiceOrder";
+import { NotificationSubscriptionOrderUseCase } from "../../../application/Services/PaymentServices/NotificationSubOrder";
 
-export class NotificationServiceOrderController {
-    constructor(readonly notificationServiceOrderUseCase: NotificationServiceOrderUseCase) {}
+export class NotificationSubscriptionOrderController {
+    constructor(readonly notificationSubscriptionOrderUseCase: NotificationSubscriptionOrderUseCase) {}
 
     async run(req: Request, res: Response) {
         const data = req.body;
         try {
-            await this.notificationServiceOrderUseCase.run(data);
+            await this.notificationSubscriptionOrderUseCase.run(data);
             res.status(200).send({
                 status: "success",
                 data: "Notificacion enviada",

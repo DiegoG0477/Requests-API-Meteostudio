@@ -1,17 +1,17 @@
 import { CreateNotificationUseCase } from "../../UseCases/CreateNotificationUseCase";
 import { NotificationQueue } from "../../../infraestructure/services/RabbitMq/NotificationQueue";
 
-export class NotificationDeleteBookUseCase {
+export class NotificationRequestFileStationUseCase {
     constructor(
         readonly serviceNotifiacion: NotificationQueue,
         readonly createNotification: CreateNotificationUseCase
     ) {}
 
     async run(data: any) {
-        let event = "book.delete";
+        const event = "enterprise.request-file-station";
 
-        if (!data.bookId) {
-            throw new Error("No se pudo crear la notificación (bookId no encontrado)");
+        if (!data) {
+            throw new Error("No se pudo crear la estación (datos insuficientes)");
         }
         
         const notification = await this.createNotification.run(event, data);
