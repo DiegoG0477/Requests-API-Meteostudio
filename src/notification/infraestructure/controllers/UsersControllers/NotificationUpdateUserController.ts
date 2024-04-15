@@ -18,8 +18,7 @@ export class NotificationUpdateUserController {
                 data: 'Notificacion enviada',
             });
         } catch (error) {
-            // Code HTTP : 204 Sin contenido
-            res.status(204).send({
+            res.status(400).send({
                 status: 'error',
                 data: 'Ocurrió un error al solicitar el servicio',
                 msn: error,

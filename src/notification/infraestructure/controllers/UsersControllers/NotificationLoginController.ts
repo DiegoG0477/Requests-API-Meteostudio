@@ -7,17 +7,18 @@ export class NotificationLoginController {
     async run(req: Request, res: Response) {
         const data = req.body;
         try {
+            console.log("data", data);
             await this.notificationAuthUseCase.run(data);
             res.status(200).send({
                 status: "success",
-                data: "Notificacion enviada",
+                data: "Notificación enviada",
             });
         } catch (error) {
-            //Code HTTP : 204 Sin contenido
-            res.status(204).send({
+            console.log("error", error);
+            res.status(400).send({
                 status: "error",
-                data: "Ocurrió un error al solicitar el servicio",
-                msn: error,
+                message: "Ocurrió un error al solicitar el servicio",
+                data: error,
             });
         }
     }

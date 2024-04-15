@@ -1,9 +1,9 @@
 import { CreateNotificationUseCase } from "../../UseCases/CreateNotificationUseCase";
-import { NotificationQueue } from "../../../infraestructure/services/RabbitMq/NotificationQueue";
+import { NotificationServer } from "../../../infraestructure/services/aws/NotificationServer";
 
 export class NotificationRequestFileStationUseCase {
     constructor(
-        readonly serviceNotifiacion: NotificationQueue,
+        readonly serviceNotifiacion: NotificationServer,
         readonly createNotification: CreateNotificationUseCase
     ) {}
 

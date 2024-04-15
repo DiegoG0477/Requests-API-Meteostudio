@@ -28,9 +28,9 @@ import { NotificationLoginController } from "./controllers/UsersControllers/Noti
 import { NotificationRegisterController } from "./controllers/UsersControllers/NotificationRegisterController";
 import { NotificationUpdateUserController } from "./controllers/UsersControllers/NotificationUpdateUserController";
 
-import { NotificationQueue } from "./services/RabbitMq/NotificationQueue";
+import { NotificationServer } from "./services/aws/NotificationServer";
 
-export const servicesNotification = new NotificationQueue();
+export const servicesNotification = new NotificationServer();
 
 export const createNotificationUseCase = new CreateNotificationUseCase();
 

@@ -1,5 +1,5 @@
 import { Notification } from "../Notification";
 
-export interface INotificationQueue {
+export interface INotificationServer {
   sendNotification(notification : Notification): Promise<boolean>;
 }
