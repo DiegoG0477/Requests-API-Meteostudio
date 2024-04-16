@@ -4,7 +4,8 @@ import axios from "axios";
 
 export class NotificationServer implements INotificationServer {
     async sendNotification(notification: Notification): Promise<boolean> {
-        const lambdaUrl = "https://6izln6f63q5k6ra67mf2hhuh6u0qgybx.lambda-url.us-east-1.on.aws/";
+        const AWS_URL = process.env.AWS_FUNCTION_URL ?? "";
+        const lambdaUrl = AWS_URL;
 
         const requestData = {
             body: JSON.stringify(notification),
