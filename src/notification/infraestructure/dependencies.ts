@@ -11,6 +11,7 @@ import { NotificationGetUsersUseCase } from "../application/Services/UserService
 import { NotificationLoginUseCase } from "../application/Services/UserServices/NotificationLogin";
 import { NotificationRegisterUseCase } from "../application/Services/UserServices/NotificationRegister";
 import { NotificationUpdateUserUseCase } from "../application/Services/UserServices/NotificationUpdateUser";
+import { NotificationGetStationsByUserUseCase } from "../application/Services/EnterpriseServices/NotificationGetStationsByUser";
 
 import { CreateNotificationUseCase } from "../application/UseCases/CreateNotificationUseCase";
 
@@ -27,6 +28,7 @@ import { NotificationGetUsersController } from "./controllers/UsersControllers/N
 import { NotificationLoginController } from "./controllers/UsersControllers/NotificationLoginController";
 import { NotificationRegisterController } from "./controllers/UsersControllers/NotificationRegisterController";
 import { NotificationUpdateUserController } from "./controllers/UsersControllers/NotificationUpdateUserController";
+import { NotificationGetStationsByUserController } from "./controllers/EnterpriseController/NotificationGetStationByUserController";
 
 import { NotificationServer } from "./services/aws/NotificationServer";
 
@@ -99,6 +101,11 @@ export const notificationUpdateUserUseCase = new NotificationUpdateUserUseCase(
   createNotificationUseCase
 );
 
+export const notificationGetStationsByUserUseCase = new NotificationGetStationsByUserUseCase(
+  servicesNotification,
+  createNotificationUseCase
+);
+
 export const notificationCancelSubscriptionController = new NotificationCancelSubscriptionController(
   notificationCancelSubscriptionUseCase
 );
@@ -149,4 +156,8 @@ export const notificationRegisterController = new NotificationRegisterController
 
 export const notificationUpdateUserController = new NotificationUpdateUserController(
   notificationUpdateUserUseCase
+);
+
+export const notificationGetStationsByUserController = new NotificationGetStationsByUserController(
+  notificationGetStationsByUserUseCase
 );

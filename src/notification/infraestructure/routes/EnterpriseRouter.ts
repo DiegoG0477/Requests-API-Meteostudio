@@ -1,4 +1,5 @@
 import express from "express";
+import { authenticateMiddleware } from "../../../middlewares/authentication";
 
 import { 
     notificationCancelSubscriptionController,
@@ -6,18 +7,21 @@ import {
     notificationGetStationsController,
     notificationInviteUserUseCase,
     notificationRequestStationController,
-    notificationUpdateStationController
+    notificationUpdateStationController,
+    notificationGetStationsByUserController
 } from "../dependencies";
 
 export const enterpriseRouter = express.Router();
 
 enterpriseRouter.patch(
     "/subscriptions/cancel",
+    authenticateMiddleware,
     notificationCancelSubscriptionController.run.bind(notificationCancelSubscriptionController)
 );
 
 enterpriseRouter.get(
     "/stations/file/:idStation",
+    authenticateMiddleware,
     notificationRequestFileStationController.run.bind(notificationRequestFileStationController)
 )
 
@@ -33,6 +37,7 @@ enterpriseRouter.get(
 
 enterpriseRouter.post(
     "/stations/invite",
+    authenticateMiddleware,
     notificationInviteUserUseCase.run.bind(notificationInviteUserUseCase)
 )
 
@@ -43,5 +48,12 @@ enterpriseRouter.post(
 
 enterpriseRouter.patch(
     "/stations/:idStation",
+    authenticateMiddleware,
     notificationUpdateStationController.run.bind(notificationUpdateStationController)
+)
+
+enterpriseRouter.get(
+    "/stations/users/list",
+    authenticateMiddleware,
+    notificationGetStationsByUserController.run.bind(notificationGetStationsByUserController)
 )

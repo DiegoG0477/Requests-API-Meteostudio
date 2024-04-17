@@ -11,6 +11,7 @@ export const authenticateMiddleware = (
     res: Response,
     next: NextFunction
 ) => {
+    console.log('validando token...')
     
     const token = req.header('Authorization');
 
@@ -19,10 +20,13 @@ export const authenticateMiddleware = (
     }
 
     try {
-
+        console.log("secretKey", secretKey);
+        console.log("token", token);
         const decoded = jwt.verify(token, secretKey);
 
-        (req as any).token = decoded;
+        console.log("decoded", decoded);
+
+        (req as any).userId = decoded;
 
         next();
     } catch (error) {
