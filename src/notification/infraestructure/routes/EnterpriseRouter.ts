@@ -8,7 +8,8 @@ import {
     notificationInviteUserUseCase,
     notificationRequestStationController,
     notificationUpdateStationController,
-    notificationGetStationsByUserController
+    notificationGetStationsByUserController,
+    notificationAllowAccessController
 } from "../dependencies";
 
 export const enterpriseRouter = express.Router();
@@ -56,4 +57,10 @@ enterpriseRouter.get(
     "/stations/users/list",
     authenticateMiddleware,
     notificationGetStationsByUserController.run.bind(notificationGetStationsByUserController)
+)
+
+enterpriseRouter.post(
+    "/stations/users/access",
+    authenticateMiddleware,
+    notificationAllowAccessController.run.bind(notificationAllowAccessController)
 )

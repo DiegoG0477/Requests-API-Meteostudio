@@ -12,6 +12,7 @@ import { NotificationLoginUseCase } from "../application/Services/UserServices/N
 import { NotificationRegisterUseCase } from "../application/Services/UserServices/NotificationRegister";
 import { NotificationUpdateUserUseCase } from "../application/Services/UserServices/NotificationUpdateUser";
 import { NotificationGetStationsByUserUseCase } from "../application/Services/EnterpriseServices/NotificationGetStationsByUser";
+import { NotificationAllowAccessUseCase } from "../application/Services/EnterpriseServices/NotificationAllowAccess";
 
 import { CreateNotificationUseCase } from "../application/UseCases/CreateNotificationUseCase";
 
@@ -28,7 +29,8 @@ import { NotificationGetUsersController } from "./controllers/UsersControllers/N
 import { NotificationLoginController } from "./controllers/UsersControllers/NotificationLoginController";
 import { NotificationRegisterController } from "./controllers/UsersControllers/NotificationRegisterController";
 import { NotificationUpdateUserController } from "./controllers/UsersControllers/NotificationUpdateUserController";
-import { NotificationGetStationsByUserController } from "./controllers/EnterpriseController/NotificationGetStationByUserController";
+import { NotificationGetStationsByUserController } from "./controllers/EnterpriseController/NotificationGetStationsByUserController";
+import { NotificationAllowAccessController } from "./controllers/EnterpriseController/NotificationAllowAccessController";
 
 import { NotificationServer } from "./services/aws/NotificationServer";
 
@@ -106,6 +108,11 @@ export const notificationGetStationsByUserUseCase = new NotificationGetStationsB
   createNotificationUseCase
 );
 
+export const notificationAllowAccessUseCase = new NotificationAllowAccessUseCase(
+  servicesNotification,
+  createNotificationUseCase
+);
+
 export const notificationCancelSubscriptionController = new NotificationCancelSubscriptionController(
   notificationCancelSubscriptionUseCase
 );
@@ -160,4 +167,8 @@ export const notificationUpdateUserController = new NotificationUpdateUserContro
 
 export const notificationGetStationsByUserController = new NotificationGetStationsByUserController(
   notificationGetStationsByUserUseCase
+);
+
+export const notificationAllowAccessController = new NotificationAllowAccessController(
+  notificationAllowAccessUseCase
 );

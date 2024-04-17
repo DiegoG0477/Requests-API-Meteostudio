@@ -18,15 +18,24 @@ export class NotificationGetStationsByUserController {
                 console.log("idUser", idUser);
                 data = {
                     ...data,
-                    idUser,
+                    user_id:idUser,
                 };
+            } else {
+                throw new Error("No se pudo brindar el acceso (datos insuficientes)");
             }
 
             console.log("data", data);
             await this.useCase.run(data);
-            res.status(200).send("Notificación enviada");
+            res.status(200).send({
+                status: 'success',
+                data: 'Notificacion enviada',
+            });
         } catch (error) {
-            res.status(500).send(error);
+            res.status(400).send({
+                status: 'error',
+                data: 'Ocurrió un error al solicitar el servicio',
+                msn: error,
+            });
         }
     }
 }
