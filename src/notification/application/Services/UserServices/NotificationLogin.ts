@@ -8,7 +8,7 @@ export class NotificationLoginUseCase {
     ) {}
 
     async run(data: any) {
-        const event = "auth.login";
+        const event = "enterprise.auth.login";
 
         if (!data) {
             throw new Error("No se pudo iniciar sesión (datos insuficientes)");

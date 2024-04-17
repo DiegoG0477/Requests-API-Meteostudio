@@ -6,16 +6,16 @@ Entidades / Categorías de solicitudes administradas por esta API
 Users
 
     - Servicios de Admin
-        - Obtener Usuarios: users.get-all -> code
-        - Obtener Usuario por Id: users.get-id -> code
+        - Obtener Usuarios: enterprise.users.get-all -> code
+        - Obtener Usuario por Id: enterprise.users.get-id -> code
     
     - Servicios de Usuario
-        - Registrarse: users.register-type -> code
+        - Registrarse: enterprise.users.register-type -> code
         Tipo de usuario puede ser alguno entre: [particular(individual), empleado(employee), company(empresa)]
         #Dependiendo del tipo de usuario, es lo que se registra en la BDD (nueva estación, nueva suscripción(si es empleado, una suscripción automática a la estación(es) de su empresa)
-        - Iniciar Sesión: users.login -> code
-        - Modificar datos propios: users.update-data -> code
-        #NO MVP (Opcional), no es parte del MVP - Cambiar contraseña olvidada: users.update-password
+        - Iniciar Sesión: enterprise.auth.login -> code
+        - Modificar datos propios: enterprise.users.update-data -> code
+        #NO MVP (Opcional), no es parte del MVP - Cambiar contraseña olvidada: enterprise.users.update-password
 
 Enterprise
 

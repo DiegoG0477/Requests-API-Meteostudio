@@ -8,7 +8,7 @@ export class NotificationUpdateUserUseCase {
     ) {}
 
     async run(data: any) {
-        const event = "users.update-data";
+        const event = "enterprise.users.update-data";
 
         if (!data) {
             throw new Error("No se pudo actualizar el usuario (datos insuficientes)");

@@ -8,7 +8,7 @@ export class NotificationGetDataUseCase {
     ) {}
 
     async run(data: any) {
-        const event = "eteorological.request-data-time";
+        const event = "meteorological.request-data-time";
 
         if (!data) {
             throw new Error("No se pudo obtener los datos (datos insuficientes)");

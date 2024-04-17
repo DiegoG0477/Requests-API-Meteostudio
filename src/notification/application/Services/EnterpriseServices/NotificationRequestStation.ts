@@ -8,7 +8,7 @@ export class NotificationRequestStationUseCase {
     ) {}
 
     async run(data: any) {
-        const event = " enterprise.request-station";
+        const event = "enterprise.request-station";
 
         if (!data) {
             throw new Error("No se pudo crear la estación (datos insuficientes)");

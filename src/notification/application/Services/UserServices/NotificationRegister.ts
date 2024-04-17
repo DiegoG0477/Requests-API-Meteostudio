@@ -8,7 +8,7 @@ export class NotificationRegisterUseCase {
     ) {}
 
     async run(data: any) {
-        const event = "users.post-register";
+        const event = "enterprise.users.post-register";
 
         if (!data) {
             throw new Error("No se pudo registrar al usuario (datos insuficientes)");

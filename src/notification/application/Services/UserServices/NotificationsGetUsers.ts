@@ -8,10 +8,10 @@ export class NotificationGetUsersUseCase {
     ) {}
 
     async run(data: any) {
-        let event = "users.get-id";
+        let event = "enterprise.users.get-id";
 
         if (!data.userId) {
-            event = "users.get-all";
+            event = "enterprise.users.get-all";
         }
 
         const notification = await this.createNotification.run(event, data);
